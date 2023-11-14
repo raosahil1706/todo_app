@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TodoCard extends StatelessWidget {
-  const TodoCard(
+  TodoCard(
       {super.key,
       required this.iconColor,
       required this.iconData,
       required this.title,
       required this.time,
       required this.check,
-      required this.iconBgColor});
+      required this.iconBgColor,
+      required this.onChange,
+      required this.index});
 
   final String title;
   final IconData iconData;
@@ -16,6 +18,8 @@ class TodoCard extends StatelessWidget {
   final String time;
   final bool check;
   final Color iconBgColor;
+  final Function onChange;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,9 @@ class TodoCard extends StatelessWidget {
                 activeColor: Color(0xff6cf8a9),
                 checkColor: Color(0xff0e3e26),
                 value: check,
-                onChanged: (value) {},
+                onChanged: (value) {
+                  onChange(index);
+                },
               ),
             ),
           ),

@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   final Stream _stream =
       FirebaseFirestore.instance.collection("Todo").snapshots();
   AuthClass authClass = AuthClass();
+  List<Select> selected = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,19 +41,41 @@ class _HomePageState extends State<HomePage> {
             width: 25,
           ),
         ],
-        bottom: const PreferredSize(
+        bottom: PreferredSize(
             preferredSize: Size.fromHeight(35),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.only(left: 22),
-                child: Text(
-                  "Monday 11",
-                  style: TextStyle(
-                    fontSize: 33,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Monday 11",
+                      style: TextStyle(
+                        fontSize: 33,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff8a32f1),
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          // FirebaseFirestore.instance
+                          //     .collection("Todo")
+                          //     .doc(widget.id)
+                          //     .delete()
+                          //     .then((value) {
+                          //   Navigator.pop(context);
+                          // });
+                        },
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                          size: 28,
+                        ),
+                      ),
+                  ],
                 ),
               ),
             )),
@@ -142,6 +165,8 @@ class _HomePageState extends State<HomePage> {
                       iconData = Icons.add;
                       iconColor = Colors.red;
                   }
+                  selected.add(Select(
+                      id: snapshot.data.docs[index].id, checkValue: false));
                   return InkWell(
                     onTap: () {
                       Navigator.push(
@@ -158,28 +183,41 @@ class _HomePageState extends State<HomePage> {
                       title: document["title"] == null
                           ? "Add a title "
                           : document['title'],
-                      check: true,
+                      check: selected[index].checkValue,
                       iconBgColor: Colors.white,
                       iconColor: iconColor,
                       iconData: iconData,
                       time: "10 AM",
+                      index: index,
+                      onChange: onChange,
                     ),
                   );
                 });
           }),
     );
   }
-}
 
+  void onChange(int index) {
+    setState(() {
+      selected[index].checkValue = !selected[index].checkValue;
+    });
+  }
+}
 
 ////////////
 ///
 ///IconButton(
-              // onPressed: () async {
-              //   await authClass.logout(context);
-              //   Navigator.pushAndRemoveUntil(
-              //       context,
-              //       MaterialPageRoute(builder: (builder) => SignUpPage()),
-              //       (route) => false);
-              // },
-              // icon: Icon(Icons.logout)),
+// onPressed: () async {
+//   await authClass.logout(context);
+//   Navigator.pushAndRemoveUntil(
+//       context,
+//       MaterialPageRoute(builder: (builder) => SignUpPage()),
+//       (route) => false);
+// },
+// icon: Icon(Icons.logout)),
+
+class Select {
+  String id;
+  bool checkValue = false;
+  Select({required this.checkValue,required this.id});
+}
