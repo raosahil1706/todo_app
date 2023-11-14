@@ -22,7 +22,7 @@ class _AddToDoState extends State<AddToDo> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color(0xff1d1e26),
             Color(0xff252041),
@@ -32,13 +32,13 @@ class _AddToDoState extends State<AddToDo> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               IconButton(
                 onPressed: () {
                   Navigator.pop(context,
-                      MaterialPageRoute(builder: (builder) => HomePage()));
+                      MaterialPageRoute(builder: (builder) => const HomePage()));
                 },
                 icon: const Icon(
                   CupertinoIcons.arrow_left,
@@ -47,11 +47,11 @@ class _AddToDoState extends State<AddToDo> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Create",
                       style: TextStyle(
                           fontSize: 33,
@@ -59,10 +59,10 @@ class _AddToDoState extends State<AddToDo> {
                           fontWeight: FontWeight.bold,
                           letterSpacing: 4),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
-                    Text(
+                    const Text(
                       "New Todo",
                       style: TextStyle(
                           fontSize: 33,
@@ -70,72 +70,72 @@ class _AddToDoState extends State<AddToDo> {
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     labels("Task Title"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     title(),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     labels("Task Type"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     Row(
                       children: [
                         taskSelect("Important", 0xff2664fa),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         taskSelect("Planned", 0xff2bc8d9),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     labels("Descreption"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     descreption(),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     labels("Category"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     Wrap(
                       runSpacing: 10,
                       children: [
                         categorySelect("Food", 0xffff6d6e),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("WorkOut", 0xfff29732),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("Work", 0xff6557ff),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("Design", 0xff234ebd),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("Run", 0xff2bc8d9),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     button(),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                   ],
@@ -162,14 +162,14 @@ class _AddToDoState extends State<AddToDo> {
       child: Container(
         height: 56,
         width: MediaQuery.of(context).size.width - 80,
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(colors: [
+            gradient: const LinearGradient(colors: [
               Color(0xff8a32f1),
               Color(0xffad32f9),
             ])),
-        child: Center(
+        child: const Center(
           child: Text(
             "Add Todo",
             style: TextStyle(
@@ -188,17 +188,17 @@ class _AddToDoState extends State<AddToDo> {
       height: 150,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xff2a2e3d),
+        color: const Color(0xff2a2e3d),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: _descriptionController,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.grey,
           fontSize: 17,
         ),
         maxLines: null,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: "Descreption",
           hintStyle: TextStyle(
@@ -229,7 +229,7 @@ class _AddToDoState extends State<AddToDo> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
       ),
     );
   }
@@ -252,7 +252,7 @@ class _AddToDoState extends State<AddToDo> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
       ),
     );
   }
@@ -262,16 +262,16 @@ class _AddToDoState extends State<AddToDo> {
       height: 55,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xff2a2e3d),
+        color: const Color(0xff2a2e3d),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: _titleController,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.grey,
           fontSize: 17,
         ),
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: "Task Title",
           hintStyle: TextStyle(
@@ -287,7 +287,7 @@ class _AddToDoState extends State<AddToDo> {
   Widget labels(String label) {
     return Text(
       label,
-      style: TextStyle(
+      style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontSize: 16.5,

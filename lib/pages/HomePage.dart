@@ -5,7 +5,9 @@ import 'package:todo_app/pages/AddToDo.dart';
 import 'package:todo_app/pages/view_data.dart';
 import 'package:todo_app/service/Auth_service.dart';
 
-import 'SignUpPage.dart';
+import 'setting.dart';
+
+// import 'SignUpPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,21 +62,28 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     IconButton(
-                        onPressed: () {
-                          // FirebaseFirestore.instance
-                          //     .collection("Todo")
-                          //     .doc(widget.id)
-                          //     .delete()
-                          //     .then((value) {
-                          //   Navigator.pop(context);
-                          // });
-                        },
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                          size: 28,
-                        ),
+                      onPressed: () {
+                        var instance =
+                            FirebaseFirestore.instance.collection("Todo");
+                        for (int i = 0; i < selected.length; i++) {
+                          if (selected[i].checkValue) {
+                            instance.doc(selected[i].id).delete();
+                          }
+                        }
+                        // FirebaseFirestore.instance
+                        //     .collection("Todo")
+                        //     .doc(widget.id)
+                        //     .delete()
+                        //     .then((value) {
+                        //   Navigator.pop(context);
+                        // });
+                      },
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                        size: 28,
                       ),
+                    ),
                   ],
                 ),
               ),
@@ -83,11 +92,19 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black87,
           items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 32,
-                color: Colors.white,
+             BottomNavigationBarItem(
+              icon: InkWell(
+                onTap: (){
+Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => HomePage()));
+                },
+                child: Icon(
+                  Icons.home,
+                  size: 32,
+                  color: Colors.white,
+                ),
               ),
               label: "",
               //\title: Container(),
@@ -118,11 +135,19 @@ class _HomePageState extends State<HomePage> {
                 ),
                 //  title: Container(),
                 label: ""),
-            const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings,
-                  size: 32,
-                  color: Colors.white,
+             BottomNavigationBarItem(
+                icon: InkWell(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => setting()));
+                  },
+                  child: Icon(
+                    Icons.settings,
+                    size: 32,
+                    color: Colors.white,
+                  ),
                 ),
                 //title: Container(),
                 label: ""),
@@ -219,5 +244,5 @@ class _HomePageState extends State<HomePage> {
 class Select {
   String id;
   bool checkValue = false;
-  Select({required this.checkValue,required this.id});
+  Select({required this.checkValue, required this.id});
 }

@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:todo_app/pages/AddToDo.dart';
+// import 'package:todo_app/pages/AddToDo.dart';
 import 'package:todo_app/pages/HomePage.dart';
 import 'package:todo_app/service/Auth_service.dart';
 
-import 'pages/SignInPage.dart';
+// import 'pages/SignInPage.dart';
 import 'pages/SignUpPage.dart';
 
 Future<void> main() async {
@@ -43,7 +43,8 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,  
+      home: currentPage,
     );
   }
 }

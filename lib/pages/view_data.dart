@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:todo_app/pages/HomePage.dart';
+// import 'package:todo_app/pages/HomePage.dart';
 
 class ViewData extends StatefulWidget {
   const ViewData({super.key, required this.document, required this.id});
@@ -21,9 +21,7 @@ class _ViewData extends State<ViewData> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    String title = widget.document["title"] == null
-        ? "Hey there"
-        : widget.document["title"];
+    String title = widget.document["title"] ?? "Hey there";
     _titleController = TextEditingController(text: title);
 
     _descriptionController =
@@ -39,7 +37,7 @@ class _ViewData extends State<ViewData> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color(0xff1d1e26),
             Color(0xff252041),
@@ -49,7 +47,7 @@ class _ViewData extends State<ViewData> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -77,7 +75,7 @@ class _ViewData extends State<ViewData> {
                             Navigator.pop(context);
                           });
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.delete,
                           color: Colors.red,
                           size: 28,
@@ -100,22 +98,22 @@ class _ViewData extends State<ViewData> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       edit ? "Editing Todo" : "View",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 33,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 4),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
-                    Text(
+                    const Text(
                       "Your Todo",
                       style: TextStyle(
                           fontSize: 33,
@@ -123,72 +121,72 @@ class _ViewData extends State<ViewData> {
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     labels("Task Title"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     title(),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     labels("Task Type"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     Row(
                       children: [
                         taskSelect("Important", 0xff2664fa),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         taskSelect("Planned", 0xff2bc8d9),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     labels("Descreption"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     descreption(),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     labels("Category"),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     Wrap(
                       runSpacing: 10,
                       children: [
                         categorySelect("Food", 0xffff6d6e),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("WorkOut", 0xfff29732),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("Work", 0xff6557ff),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("Design", 0xff234ebd),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         categorySelect("Run", 0xff2bc8d9),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     edit ? button() : Container(),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                   ],
@@ -215,14 +213,14 @@ class _ViewData extends State<ViewData> {
       child: Container(
         height: 56,
         width: MediaQuery.of(context).size.width - 80,
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(colors: [
+            gradient: const LinearGradient(colors: [
               Color(0xff8a32f1),
               Color(0xffad32f9),
             ])),
-        child: Center(
+        child: const Center(
           child: Text(
             "Update Todo",
             style: TextStyle(
@@ -241,18 +239,18 @@ class _ViewData extends State<ViewData> {
       height: 150,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xff2a2e3d),
+        color: const Color(0xff2a2e3d),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: _descriptionController,
         enabled: edit,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.grey,
           fontSize: 17,
         ),
         maxLines: null,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: "Descreption",
           hintStyle: TextStyle(
@@ -285,7 +283,7 @@ class _ViewData extends State<ViewData> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
       ),
     );
   }
@@ -310,7 +308,7 @@ class _ViewData extends State<ViewData> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
       ),
     );
   }
@@ -320,17 +318,17 @@ class _ViewData extends State<ViewData> {
       height: 55,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xff2a2e3d),
+        color: const Color(0xff2a2e3d),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: _titleController,
         enabled: edit,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.grey,
           fontSize: 17,
         ),
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: "Task Title",
           hintStyle: TextStyle(
@@ -346,7 +344,7 @@ class _ViewData extends State<ViewData> {
   Widget labels(String label) {
     return Text(
       label,
-      style: TextStyle(
+      style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontSize: 16.5,

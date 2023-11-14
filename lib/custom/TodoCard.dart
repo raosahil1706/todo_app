@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TodoCard extends StatelessWidget {
-  TodoCard(
+  const TodoCard(
       {super.key,
       required this.iconColor,
       required this.iconData,
@@ -30,7 +30,7 @@ class TodoCard extends StatelessWidget {
           Theme(
             data: ThemeData(
               primarySwatch: Colors.blue,
-              unselectedWidgetColor: Color(0xff5e616a),
+              unselectedWidgetColor: const Color(0xff5e616a),
             ),
             child: Transform.scale(
               scale: 1.5,
@@ -38,8 +38,8 @@ class TodoCard extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
-                activeColor: Color(0xff6cf8a9),
-                checkColor: Color(0xff0e3e26),
+                activeColor: const Color(0xff6cf8a9),
+                checkColor: const Color(0xff0e3e26),
                 value: check,
                 onChanged: (value) {
                   onChange(index);
@@ -54,10 +54,10 @@ class TodoCard extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                color: Color(0xff2a2e3d),
+                color: const Color(0xff2a2e3d),
                 child: Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Container(
@@ -72,13 +72,13 @@ class TodoCard extends StatelessWidget {
                         color: iconColor,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Expanded(
                       child: Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           letterSpacing: 1,
                           fontWeight: FontWeight.w500,
@@ -88,12 +88,12 @@ class TodoCard extends StatelessWidget {
                     ),
                     Text(
                       time,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                   ],
